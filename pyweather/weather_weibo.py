@@ -47,7 +47,7 @@ for page in range(1, 3):
 		result = result + text
 		word_count +=1
 
-fo = open("/home/joan/project/pyweather/weatherdata_2.txt", "wb")
+fo = open("/home/joan/project/aliproject/pyweather/weatherdata_2.txt", "wb")
 fo.write(result)
 word_path=os.getcwd()
 print u'文字微博爬取完毕'
