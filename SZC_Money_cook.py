@@ -26,67 +26,67 @@ def func_to_chose(argument):
 	}
 	return switcher.get(argument, "worng")
 
-def total_for_chose(chose_food,chose_func,org_money):
+def food_all_cost(argument):
+	switcher = {
+		0: [180,190,210],
+		1: [150,170,190],
+		2: [180,200,230,250],
+		3: [150,180,200,220]
+	}
+	org = switcher.get(argument)[0]
+	star1 = switcher.get(argument)[1]
+	star2 = switcher.get(argument)[2]
+	if argument == 0 or argument ==1:
+		stars = [org, star1, star2]
+	else:
+		star3 = switcher.get(argument)[3]
+		stars = [org, star1, star2,star3]
+	return stars
+
+
+def total_for_chose(chose_food,chose_func,org_money,food_all_cost):
+	org_cost = food_all_cost(chose_food)[0]
+	food_to_buy = org_money/org_cost
+	org_money_rel = food_to_buy * org_cost
+
+	#star 1
+	total_star_1 = food_to_buy * food_all_cost(chose_food)[1]
+	net_earn_1 = food_to_buy * (food_all_cost(chose_food)[1]-org_cost)
+	rate_star_1 = float(net_earn_1)/float(org_money_rel)
+
+	#star 2
+	total_star_2 = food_to_buy * food_all_cost(chose_food)[2]
+	net_earn_2 = food_to_buy * (food_all_cost(chose_food)[2]-org_cost)
+	rate_star_2 = float(net_earn_2)/float(org_money_rel)	
+
+	#star 3
+	total_star_3 = food_to_buy * food_all_cost(chose_food)[2]
+	net_earn_3 = food_to_buy * (food_all_cost(chose_food)[2]-org_cost)
+	rate_star_3 = float(net_earn_3)/float(org_money_rel)
+
+
 	if (chose_food == 0 and chose_func == 0):
 		print "Cooking : MiFan"
-		food_to_buy = org_money/180
-		org_money_rel = food_to_buy*180
 		print "Origin Money is %d" % org_money_rel
-		total_star_2_0 =(food_to_buy)*190
-		net_earn_2_0 = (food_to_buy)*(190-180)
-		rate_star_2_0 = float(net_earn_2_0)/float(org_money_rel)
-		total_star_2_5 =(food_to_buy)*210
-		net_earn_2_5 = (food_to_buy)*(210-180)
-		rate_star_2_5 = float(net_earn_2_5)/float(org_money_rel)
-		print "MiFan of Star 2.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2_0, net_earn_2_0, rate_star_2_0)
-		print "MiFan of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2_5, net_earn_2_5, rate_star_2_5)
+		print "MiFan of Star 2.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_1, net_earn_1, rate_star_1)
+		print "MiFan of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2, net_earn_2, rate_star_2)
 	elif (chose_food ==1 and chose_func ==0):
 		print "Cooking : MianBao"
-		food_to_buy = org_money/150
-		org_money_rel = food_to_buy * 150
 		print "Origin Money is %d" % org_money_rel
-		total_star_2_0 =(food_to_buy)*170
-		net_earn_2_0 = (food_to_buy)*(170-150)
-		rate_star_2_0 = float(net_earn_2_0)/float(org_money_rel)
-		total_star_2_5 =(food_to_buy)*190
-		net_earn_2_5 = (food_to_buy)*(190-150)
-		rate_star_2_5 = float(net_earn_2_5)/float(org_money_rel)
-		print "MianBao of Star 2.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2_0, net_earn_2_0, rate_star_2_0)
-		print "MianBao of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2_5, net_earn_2_5, rate_star_2_5)
+		print "MianBao of Star 2.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_1, net_earn_1, rate_star_1)
+		print "MianBao of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2, net_earn_2, rate_star_2)
 	elif (chose_food ==2 and chose_func ==0):
 		print "Cooking: Zhou"
-		food_to_buy = org_money/180
-		org_money_rel = food_to_buy * 180
 		print "Origin Money is %d" % org_money_rel
-		total_star_2_5 =(food_to_buy)*200
-		net_earn_2_5 = (food_to_buy)*(200-180)
-		rate_star_2_5 = float(net_earn_2_5)/float(org_money_rel)
-		total_star_3_0 =(food_to_buy)*230
-		net_earn_3_0 = (food_to_buy)*(230-180)
-		rate_star_3_0 = float(net_earn_3_0)/float(org_money_rel)
-		total_star_3_5 =(food_to_buy)*250
-		net_earn_3_5 = (food_to_buy)*(250-180)
-		rate_star_3_5 = float(net_earn_3_5)/float(org_money_rel)
-		print "Zhou of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2_5, net_earn_2_5, rate_star_2_5)
-		print "Zhou of Star 3.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_3_0, net_earn_3_0, rate_star_3_0)
-		print "Zhou of Star 3.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_3_5, net_earn_3_5, rate_star_3_5)
+		print "Zhou of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_1, net_earn_1, rate_star_1)
+		print "Zhou of Star 3.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2, net_earn_2, rate_star_2)
+		print "Zhou of Star 3.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_3, net_earn_3, rate_star_3)
 	elif (chose_food ==3 and chose_func ==1):
 		print "Cooking: Tusi"
-		food_to_buy = org_money/150
-		org_money_rel = food_to_buy * 150
-		print "Origin Money is %d" % org_money_rel
-		total_star_2_5 =(food_to_buy)*180
-		net_earn_2_5 = (food_to_buy)*(180-150)
-		rate_star_2_5 = float(net_earn_2_5)/float(org_money_rel)
-		total_star_3_0 =(food_to_buy)*200
-		net_earn_3_0 = (food_to_buy)*(200-150)
-		rate_star_3_0 = float(net_earn_3_0)/float(org_money_rel)
-		total_star_3_5 =(food_to_buy)*220
-		net_earn_3_5 = (food_to_buy)*(220-150)
-		rate_star_3_5 = float(net_earn_3_5)/float(org_money_rel)		
-		print "Tusi of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2_5, net_earn_2_5, rate_star_2_5)
-		print "Tusi of Star 3.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_3_0, net_earn_3_0, rate_star_3_0)
-		print "Tusi of Star 3.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_3_5, net_earn_3_5, rate_star_3_5)
+		print "Origin Money is %d" % org_money_rel		
+		print "Tusi of Star 2.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_1, net_earn_1, rate_star_1)
+		print "Tusi of Star 3.0: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_2, net_earn_2, rate_star_2)
+		print "Tusi of Star 3.5: tatal money is %d, net earnings %d, and rate is %.2f%%" % (total_star_3, net_earn_3, rate_star_3)
 	else:
 		print "worng couple"
 	return
@@ -103,4 +103,4 @@ print "======Final================================"
 print "Your Origin Money is %d" % org_money
 print "Your Cooking Food is %s" % food_to_cook
 print "Your Cooking Function is %s" % func_to_cook
-total_for_chose(chose_food,chose_func,org_money)
+total_for_chose(chose_food,chose_func,org_money,food_all_cost)
